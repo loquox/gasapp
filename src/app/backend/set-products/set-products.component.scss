@@ -1,0 +1,27 @@
+.parametros{
+    background: #a8b5e3;
+    border-radius: 24px;
+    margin: 20px;
+    text-align: center;
+}
+
+
+.margin-bottom {
+    margin-bottom: 16px; /* Ajusta el tamaño del margen según lo que necesites */
+  }
+  
+  .margin-left-auto {
+    margin-left: 10px ;
+  }
+
+
+  .custom-toast {
+    --background: #f4f4fa;
+    --box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2);
+    --color: #4b4a50;
+  }
+  
+  .ion-toast.custom-toast::part(message) {
+    font-style: italic;
+  }
+  

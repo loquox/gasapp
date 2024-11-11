@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="subtitulo ion-text-wrap">
+      Configuración de Productos
+    </ion-title>
+    <ion-button slot="start" (click)="openMenu()" >
+        <ion-icon  slot="icon-only" name="menu-sharp"></ion-icon>
+    </ion-button>
+    <!-- <ion-menu-button></ion-menu-button> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="text-align: end;  margin: 10px;">
+  <ion-button class="nomal" color="dark" (click)="nuevo()">Nuevo</ion-button>
+  </div> 
+ 
+  <div *ngIf="enableNewProducto">
+    <ion-item>
+      <ion-button slot="end" (click)="enableNewProducto=false ">
+        <ion-button>
+          <ion-icon slot="icon-only" name="close"  ></ion-icon>
+        </ion-button>
+      </ion-button>
+    </ion-item>
+    <h3 class="subtitulo p-3 text-center parametros">Ingrese datos del producto</h3>
+    <ion-item>
+      <ion-label class="normal margin-left-auto" position="floating">
+        Nombre:
+      </ion-label>
+      <ion-input [(ngModel)]="producto.nombre" class="normal margin-left-auto" type="text" inputmode="text">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="normal margin-left-auto" position="floating">
+        Precio Normal:
+      </ion-label>
+      <ion-input [(ngModel)]="producto.precio" class="normal margin-left-auto" type="number" inputmode="numeric">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="normal margin-left-auto" position="floating">
+        Precio Reducido:
+      </ion-label>
+      <ion-input [(ngModel)]="producto.precioReducido" class="normal margin-left-auto" type="number">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="normal margin-left-auto" >
+        Foto:
+      </ion-label>
+      <ion-button slot="end" >
+        <label for="file-upload">
+          <ion-icon name="images" slot="icon-only"></ion-icon>
+        </label>
+        
+        <input (change)="triggerNewImageUpload($event)" id="file-upload" type="file" style="display: none;" accept="image/*">
+      </ion-button>
+    </ion-item>
+    
+
+<ion-button class="p-3" expand="full" color="dark" (click)="guardarProducto()">
+  Guardar
+</ion-button>
+
+  </div>
+
+  <app-lista-productos [productos]="productos"   (productEmiter)="editarProducto($event)" ></app-lista-productos>
+
+
+
+
+<app-upploal-image *ngIf="enableImage" (newImageEmiter)="guardarImagen($event)"   ></app-upploal-image>
+
+
+
+
+</ion-content>

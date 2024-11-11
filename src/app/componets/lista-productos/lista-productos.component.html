@@ -1,0 +1,13 @@
+<div >
+  <ion-item *ngFor="let producto of productos">
+    <ion-label class="normal">{{producto.nombre}}</ion-label>
+    <ion-button slot="end" fill="clear">
+      <ion-button fill="clear" size="large" (click)="editarProducto(producto)">
+        <ion-icon slot="icon-only" name="create" ></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" (click)="eliminarProducto(producto.id, producto)">
+        <ion-icon slot="icon-only" size="large" name="trash" color="danger"></ion-icon>
+      </ion-button>
+    </ion-button>
+  </ion-item>
+  </div>
