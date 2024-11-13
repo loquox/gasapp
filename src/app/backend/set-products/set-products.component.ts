@@ -1,6 +1,5 @@
 import { Component, inject, OnInit, ViewChild} from '@angular/core';
 import { AlertController, LoadingController, MenuController, ToastController } from '@ionic/angular';
-import { Env } from 'ionicons/dist/types/stencil-public-runtime';
 import { UpploalImageComponent } from 'src/app/componets/upploal-image/upploal-image.component';
 import { Producto } from 'src/app/model';
 import { FirestoreService } from 'src/app/services/firestore.service';
@@ -10,6 +9,7 @@ import { SupabaseService } from 'src/app/services/supabase.service';
   selector: 'app-set-products',
   templateUrl: './set-products.component.html',
   styleUrls: ['./set-products.component.scss'],
+  
 })
 export class SetProductsComponent  implements OnInit {
 
@@ -25,15 +25,18 @@ export class SetProductsComponent  implements OnInit {
 
   private path = 'Productos';
   producto!:Producto;
-  productos:Producto[]=[];
-  enableNewProducto = false;
-  enableImage= false;
+  productos!:Producto[];
+  enableNewProducto!:boolean;
+  enableImage!:boolean;
+  enableLista!:boolean;
   loading:any;
   newImage= '';
   newFile!:File;
   editar!:boolean;
 
-  @ViewChild(UpploalImageComponent) uploadImageComponent!: UpploalImageComponent;
+ @ViewChild(UpploalImageComponent) uploadImageComponent!:UpploalImageComponent;
+
+ 
 
   
   constructor() {}
@@ -42,11 +45,17 @@ export class SetProductsComponent  implements OnInit {
     this.getProducts();
     this.enableImage=true;
     this.editar=false;
+    this.enableLista=true;
+    this.enableNewProducto=false;
+    this.enableImage=true;
+    this.productos=[];
        
   }
+
+  
   
   openMenu(){
-    console.log('abriendo menu');
+   
     this.menucontroller.toggle('principal');
   }
 
@@ -99,6 +108,12 @@ export class SetProductsComponent  implements OnInit {
     }
   }
 
+  close(){
+    this.enableNewProducto=false;
+    this.enableLista=true;
+
+
+  }
 
   async showLoading() {
      this.loading = await this.loadingController.create({
@@ -143,6 +158,7 @@ export class SetProductsComponent  implements OnInit {
     this.enableNewProducto = true;
     this.enableImage=true;
     this.editar= true;
+    this.enableLista= false;
     }
 
 }

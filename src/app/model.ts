@@ -9,3 +9,14 @@ export interface Producto {
     
 
 }
+
+
+export interface Cliente{
+    uid:any;
+    nombre:string;
+    email:string;
+    celular:string;
+    foto:string;
+    referencia: string;
+    ubicacion:any;
+}

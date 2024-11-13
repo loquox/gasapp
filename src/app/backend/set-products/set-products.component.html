@@ -17,7 +17,7 @@
  
   <div *ngIf="enableNewProducto">
     <ion-item>
-      <ion-button slot="end" (click)="enableNewProducto=false ">
+      <ion-button slot="end" (click)="close()">
         <ion-button>
           <ion-icon slot="icon-only" name="close"  ></ion-icon>
         </ion-button>
@@ -57,6 +57,11 @@
         <input (change)="triggerNewImageUpload($event)" id="file-upload" type="file" style="display: none;" accept="image/*">
       </ion-button>
     </ion-item>
+    <ion-item>
+      <div *ngIf="enableNewProducto && enableImage">
+        <app-upploal-image (newImageEmiter)="guardarImagen($event)" [entity]="producto" [editar]="editar"  ></app-upploal-image>
+      </div>
+    </ion-item>
     
 
 <ion-button class="p-3" expand="full" color="dark" (click)="guardarProducto()">
@@ -65,13 +70,9 @@
 
   </div>
 
+  <div *ngIf="enableLista">
   <app-lista-productos [productos]="productos"   (productEmiter)="editarProducto($event)" ></app-lista-productos>
-
-
-
-
-<app-upploal-image *ngIf="enableImage" (newImageEmiter)="guardarImagen($event)"   ></app-upploal-image>
-
+  </div>
 
 
 

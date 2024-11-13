@@ -5,20 +5,23 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { UpploalImageComponent } from '../componets/upploal-image/upploal-image.component';
 import { ListaProductosComponent } from '../componets/lista-productos/lista-productos.component';
+import { SharedModuleModule } from '../shared-module/shared-module.module';
 
 
 
 @NgModule({
   declarations: [
     SetProductsComponent,
-    UpploalImageComponent,
+    
     ListaProductosComponent
   ],
   imports: [
     CommonModule,
-    IonicModule, 
+    IonicModule,
     FormsModule,
     CommonModule,
-  ]
+    SharedModuleModule
+    
+]
 })
 export class BackendModule { }
